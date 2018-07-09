@@ -60,6 +60,7 @@ def replace(input):
     #  thagyi
     output = output.replace(u'\u1086', u'\u103F')
 
+    output = re.sub(u'(\u1004\u103A\u1039)([\u1000-\u1021])', r'\\2\\1', output)
     output = re.sub('\u1064', u'\u1004\u103A\u1039', output)
     #  up-ngathat
 
@@ -100,6 +101,8 @@ def decompose(input):
 
     output = re.sub(u'\u108B', u'\u1004' + u'\u103A' + u'\u1039' + u'\u1036', output)
     #  ngathat-ttt
+
+    output = re.sub(u'\u1025(?=[\u103a\u102c])', u'\u1009', output)
 
     ##########  patsint
 
@@ -170,7 +173,6 @@ def visual2logical(input):
     output = re.sub(
         u'((?:\u1031)?)((?:\u103C)?)([\u1000-\u1021])((?:\u103B)?)((?:\u103D)?)((?:\u103E)?)((?:\u1037)?)((?:\u102C)?)',
         r'\3\2\4\5\6\1\7\8', output)
-
     return output
 
 def convert(input):
