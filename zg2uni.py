@@ -60,18 +60,18 @@ def replace(input):
     #  thagyi
     output = output.replace(u'\u1086', u'\u103F')
 
-    output = re.sub(u'(\u1004\u103A\u1039)([\u1000-\u1021])', r'\\2\\1', output)
-    output = re.sub('\u1064', u'\u1004\u103A\u1039', output)
-    #  up-ngathat
-
-    output = re.sub(u'\u104E', u'\u104E\u1004\u103A\u1038', output)
-    #  la-gaung
-
     return output
 
 def decompose(input):
 
     output = input
+
+    output = re.sub(u'([\u1000-\u1021])\u1064', u'\u1064\\1', output)
+    output = re.sub('\u1064', u'\u1004\u103A\u1039', output)
+    #  up-ngathat
+
+    output = re.sub(u'\u104E', u'\u104E\u1004\u103A\u1038', output)
+    #  la-gaung
 
     ########
 
